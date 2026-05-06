@@ -36,8 +36,8 @@ services:
 
   frontend:
     build:
-      context: ../frontend   
-    container_name: pinter-front
+      context: ../pinter-front  
+    container_name: pinter-frontend
     restart: always
     depends_on:
       - backend
