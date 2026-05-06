@@ -4,8 +4,10 @@ services:
     container_name: pinter-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 7;wk[uJ8:4M5
       MYSQL_DATABASE: pinter
+      MYSQL_USER: pinter_user
+      MYSQL_PASSWORD: "7;wk[uJ8:4M5"
     ports:
       - "3307:3306"
     volumes:
@@ -18,7 +20,7 @@ services:
 
   backend:
     build:
-      context: ../pinter   # <-- IMPORTANT : adapte si ton dossier s'appelle différemment
+      context: ../pinter   
     container_name: pinter-backend
     restart: always
     depends_on:
@@ -29,18 +31,18 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/pinter
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_USERNAME: pinter_user
+      SPRING_DATASOURCE_PASSWORD: "7;wk[uJ8:4M5"
 
   frontend:
     build:
-      context: ../frontend   # <-- idem ici
+      context: ../frontend   
     container_name: pinter-frontend
     restart: always
     depends_on:
       - backend
     ports:
-      - "4200:80"
+      - "80:80"
 
 volumes:
   db_data:
