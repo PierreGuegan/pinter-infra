@@ -18,7 +18,7 @@ services:
 
   backend:
     build:
-      context: ../pinter   # <-- IMPORTANT : adapte si ton dossier s'appelle différemment
+      context: ../pinter  
     container_name: pinter-backend
     restart: always
     depends_on:
@@ -34,7 +34,7 @@ services:
 
   frontend:
     build:
-      context: ../pinter-front   # <-- idem ici
+      context: ../pinter-front  
     container_name: pinter-frontend
     restart: always
     depends_on:
