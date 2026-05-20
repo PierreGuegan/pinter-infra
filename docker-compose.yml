@@ -17,26 +17,26 @@ services:
       retries: 5
 
   backend:
-  build:
-    context: ../pinter
-  container_name: pinter-backend
-  restart: always
-  depends_on:
-    db:
-      condition: service_healthy
-  ports:
-    - "8080:8080"
-  environment:
-    SPRING_PROFILES_ACTIVE: docker
-    SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/pinter
-    SPRING_DATASOURCE_USERNAME: root
-    SPRING_DATASOURCE_PASSWORD: root
-  volumes:
-    - /root/pinter/pinter/uploads:/app/uploads
+    build:
+      context: ../pinter
+    container_name: pinter-backend
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/pinter
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    volumes:
+      - /root/pinter/pinter/uploads:/app/uploads
 
   frontend:
     build:
-      context: ../pinter-front  
+      context: ../pinter-front
     container_name: pinter-frontend
     restart: always
     depends_on:
